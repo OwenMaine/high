@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Point Fabrics, Inc. - Premium Fabric Manufacturing</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS (Animate on Scroll) Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Swiper.js for Carousel -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Custom styles to complement Tailwind and match the design */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Hero Slider Styles */
+        .hero-slider {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #fff;
+        }
+
+        /* Header Styles */
+        .header {
+            transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-scrolled .nav-link, .header-scrolled .logo {
+            color: #333 !important;
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #c0a080; /* Accent color */
+        }
+        
+        /* Section Title Styles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #c0a080; /* Accent color */
+        }
+
+        /* Custom Button Style */
+        .btn-custom {
+            background-color: #c0a080;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #a88d6f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Testimonial Slider */
+        .testimonial-card {
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Scroll to top button */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        #scrollTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header -->
+    <header id="header" class="header fixed top-0 left-0 w-full z-50 text-white">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Left Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#collections" class="nav-link font-medium">Fabric Collections</a>
+                <a href="about.html" class="nav-link font-medium">About Us</a>
+            </nav>
+            <!-- Logo -->
+            <div class="text-center">
+                <a href="#" class="logo text-2xl lg:text-3xl font-bold tracking-wider">HIGH POINT FABRICS</a>
+            </div>
+            <!-- Right Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="sustainability.html" class="nav-link font-medium">Sustainability</a>
+                <a href="contact.html" class="nav-link font-medium">Contact Us</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white text-black text-center">
+            <a href="#collections" class="block py-3 px-6 hover:bg-gray-100">Fabric Collections</a>
+            <a href="#about" class="block py-3 px-6 hover:bg-gray-100">About Us</a>
+            <a href="#sustainability" class="block py-3 px-6 hover:bg-gray-100">Sustainability</a>
+            <a href="#contact" class="block py-3 px-6 hover:bg-gray-100">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Hero Section Carousel -->
+    <section class="hero-slider swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide" style="background-image: url('images/1.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content p-6">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Innovative Fabric Manufacturing</h1>
+                    <p class="text-lg md:text-xl max-w-2xl mx-auto">From custom designs to large-scale production, we bring your textile visions to life with unparalleled quality.</p>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide" style="background-image: url('images/2.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content p-6">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Sustainably Made in the USA</h1>
+                    <p class="text-lg md:text-xl max-w-2xl mx-auto">Committed to eco-friendly practices and American craftsmanship in the heart of North Carolina.</p>
+                </div>
+            </div>
+            <!-- Slide 3: Testimonial -->
+            <div class="swiper-slide" style="background-image: url('images/3.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content p-6">
+                     <div class="testimonial-card rounded-lg p-8 max-w-lg mx-auto">
+                        <p class="text-xl italic mb-4">"The quality and consistency from High Point Fabrics are extraordinary. They are true partners in our success."</p>
+                        <h3 class="font-bold text-lg">Alex Regalman</h3>
+                        <p class="text-sm text-gray-300">Lead Designer, Fashion Co.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Intro Section -->
+        <section id="intro" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-light mb-4">Everything You Need in One Place</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">We are a premier fabric manufacturer based in Archdale, NC, specializing in high-quality textiles with an eco-friendly and sustainable philosophy.</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="collections" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="section-title text-3xl md:text-4xl font-semibold">Our Core Capabilities</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10 text-center">
+                    <!-- Service 1 -->
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white">
+                            <img src="images/4.jpg" alt="Custom Weaving" class="w-full h-48 object-cover rounded-md mb-6">
+                            <h3 class="text-2xl font-semibold mb-2">Custom Weaving</h3>
+                            <p class="text-gray-600">Bring your unique patterns to life with our state-of-the-art looms and expert technicians.</p>
+                        </div>
+                    </div>
+                    <!-- Service 2 -->
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-6 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white">
+                             <img src="images/5.jpg" alt="Dyeing and Finishing" class="w-full h-48 object-cover rounded-md mb-6">
+                            <h3 class="text-2xl font-semibold mb-2">Dyeing & Finishing</h3>
+                            <p class="text-gray-600">A vast color palette and specialized finishes to meet any technical or aesthetic requirement.</p>
+                        </div>
+                    </div>
+                    <!-- Service 3 -->
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <div class="p-6 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white">
+                             <img src="images/6.jpg" alt="In-Stock Programs" class="w-full h-48 object-cover rounded-md mb-6">
+                            <h3 class="text-2xl font-semibold mb-2">In-Stock Programs</h3>
+                            <p class="text-gray-600">A wide variety of high-quality fabrics available for immediate shipment to accelerate your production.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20">
+                    <div class="md:w-1/2" data-aos="fade-right">
+                        <img src="images/7.jpg" alt="High Point Fabrics Factory" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div class="md:w-1/2" data-aos="fade-left">
+                        <h2 class="section-title text-3xl md:text-4xl font-semibold mb-6">We're Not Just a Supplier, We're Your Partner.</h2>
+                        <p class="text-gray-600 mb-4">For decades, High Point Fabrics has been a cornerstone of the American textile industry. Our passion is manufacturing inspiring fabrics that empower designers and brands to create exceptional products.</p>
+                        <p class="text-gray-600 mb-6">We combine traditional craftsmanship with modern technology to ensure every yard of fabric leaving our facility meets the highest standards of quality and performance.</p>
+                        <a href="#contact" class="btn-custom font-bold py-3 px-8 rounded-full inline-block">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainability Section -->
+        <section id="sustainability" class="py-20">
+             <div class="container mx-auto px-6 text-center">
+                <div class="mb-12" data-aos="fade-up">
+                    <h2 class="section-title text-3xl md:text-4xl font-semibold">Quality Garments, Responsibly Made.</h2>
+                    <p class="max-w-3xl mx-auto text-gray-600 mt-4">We are committed to environmental stewardship through responsible sourcing, water conservation, and waste reduction initiatives.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <i class="fas fa-leaf text-4xl text-green-500 mb-2"></i>
+                        <h3 class="font-semibold">Recycled Fibers</h3>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-tint text-4xl text-blue-500 mb-2"></i>
+                        <h3 class="font-semibold">Water Reduction</h3>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-solar-panel text-4xl text-yellow-500 mb-2"></i>
+                        <h3 class="font-semibold">Renewable Energy</h3>
+                    </div>
+                     <div class="text-center">
+                        <i class="fas fa-recycle text-4xl text-gray-500 mb-2"></i>
+                        <h3 class="font-semibold">Circular Economy</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white pt-20 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <!-- Company Info -->
+                <div data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-4">High Point Fabrics, Inc.</h3>
+                    <p class="text-gray-400">5261 Glenola Industrial Dr,<br>Archdale, NC 27263</p>
+                </div>
+                <!-- Quick Links -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#collections" class="hover:text-gray-300 transition-colors">Collections</a></li>
+                        <li><a href="#about" class="hover:text-gray-300 transition-colors">About Us</a></li>
+                        <li><a href="#sustainability" class="hover:text-gray-300 transition-colors">Sustainability</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-4">Get In Touch</h3>
+                    <p class="text-gray-400">
+                        <strong>Phone:</strong> (336) 861-3136<br>
+                        <strong>Email:</strong> <a href="mailto:contact@hpfabrics.com" class="hover:text-gray-300">contact@hpfabrics.com</a>
+                    </p>
+                </div>
+                <!-- Call to Action -->
+                <div data-aos="fade-up" data-aos-delay="300">
+                     <h3 class="text-xl font-semibold mb-4">Have a Question?</h3>
+                     <p class="text-gray-400 mb-4">Our team is ready to assist with your fabric needs.</p>
+                     <a href="#" class="btn-custom font-bold py-3 px-6 rounded-full inline-block">Contact Us</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; <span id="year"></span> High Point Fabrics, Inc. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="btn-custom w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Swiper.js -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- AOS (Animate on Scroll) Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        // Initialize Hero Swiper
+        const heroSwiper = new Swiper('.hero-slider', {
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            on: {
+                slideChangeTransitionStart: function () {
+                    // Re-trigger animation for content on active slide
+                    const activeSlide = this.slides[this.activeIndex];
+                    const content = activeSlide.querySelector('.slide-content');
+                    if (content) {
+                        content.style.animation = 'none';
+                        void content.offsetWidth; // Trigger reflow
+                        content.style.animation = 'fadeIn 1.5s ease-out';
+                    }
+                },
+            },
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        const logo = header.querySelector('.logo');
+        const navLinks = header.querySelectorAll('.nav-link');
+        const mobileMenuIcon = header.querySelector('#mobile-menu-btn i');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+                logo.classList.add('text-black');
+                navLinks.forEach(link => link.classList.add('text-black'));
+                mobileMenuIcon.classList.add('text-black');
+            } else {
+                header.classList.remove('header-scrolled');
+                logo.classList.remove('text-black');
+                navLinks.forEach(link => link.classList.remove('text-black'));
+                mobileMenuIcon.classList.remove('text-black');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    </script>
+</body>
+</html>

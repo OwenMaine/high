@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - High Point Fabrics, Inc.</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS (Animate on Scroll) Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-link, .logo {
+            color: #333 !important;
+        }
+        
+        .nav-link.active {
+            color: #c0a080 !important;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: #c0a080; /* Accent color */
+        }
+
+        /* Page Hero Section */
+        .page-hero {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .page-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .page-hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Section Title Styles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #c0a080; /* Accent color */
+        }
+        
+        /* Form Input Styles */
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #c0a080;
+            box-shadow: 0 0 0 3px rgba(192, 160, 128, 0.2);
+        }
+
+        /* Custom Button Style */
+        .btn-custom {
+            background-color: #c0a080;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #a88d6f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Scroll to top button */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        #scrollTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header -->
+    <header id="header" class="header sticky top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Left Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#collections" class="nav-link font-medium">Fabric Collections</a>
+                <a href="about.html" class="nav-link font-medium">About Us</a>
+            </nav>
+            <!-- Logo -->
+            <div class="text-center">
+                <a href="index.html" class="logo text-2xl lg:text-3xl font-bold tracking-wider">HIGH POINT FABRICS</a>
+            </div>
+            <!-- Right Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="sustainability.html" class="nav-link font-medium">Sustainability</a>
+                <a href="contact.html" class="nav-link active">Contact Us</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="focus:outline-none">
+                    <i class="fas fa-bars text-2xl text-black"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white text-black text-center">
+            <a href="index.html#collections" class="block py-3 px-6 hover:bg-gray-100">Fabric Collections</a>
+            <a href="about.html" class="block py-3 px-6 hover:bg-gray-100">About Us</a>
+            <a href="sustainability.html" class="block py-3 px-6 hover:bg-gray-100">Sustainability</a>
+            <a href="contact.html" class="block py-3 px-6 hover:bg-gray-100 bg-gray-50 font-semibold">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="background-image: url('images/21.jpg');">
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content" data-aos="fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold">Get In Touch</h1>
+            <p class="text-lg md:text-xl mt-2">We're here to help and answer any question you might have.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Contact Section -->
+        <section id="contact-form-section" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Contact Info -->
+                    <div data-aos="fade-right">
+                        <h2 class="section-title text-3xl md:text-4xl font-semibold mb-6">Contact Information</h2>
+                        <p class="text-gray-600 mb-8">Have a question about an order, a project, or our fabrics? Fill out the form and our team will be in touch with you shortly.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-2xl text-c0a080 mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Our Address</h3>
+                                    <p class="text-gray-600">5261 Glenola Industrial Dr, Archdale, NC 27263</p>
+                                </div>
+                            </div>
+                             <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-2xl text-c0a080 mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Phone</h3>
+                                    <p class="text-gray-600">(336) 861-3136</p>
+                                </div>
+                            </div>
+                             <div class="flex items-start">
+                                <i class="fas fa-envelope text-2xl text-c0a080 mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Email</h3>
+                                    <p class="text-gray-600">contact@hpfabrics.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-left">
+                        <form action="#" method="POST">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                    <input type="text" id="name" name="name" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                    <input type="email" id="email" name="email" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                                <input type="text" id="subject" name="subject" class="form-input" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="5" class="form-input" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn-custom font-bold py-3 px-8 rounded-full w-full">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map" class="w-full h-[500px]" data-aos="fade-in">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3233.176987128641!2d-79.90983302451113!3d35.86917937252728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885312901244e5e1%3A0x7bbe551a186fe76a!2s5261%20Glenola%20Industrial%20Dr%2C%20Archdale%2C%20NC%2027263%2C%20USA!5e0!3m2!1sen!2sng!4v1753017651895!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-20 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">High Point Fabrics, Inc.</h3>
+                    <p class="text-gray-400">5261 Glenola Industrial Dr,<br>Archdale, NC 27263</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#collections" class="hover:text-gray-300 transition-colors">Collections</a></li>
+                        <li><a href="about.html" class="hover:text-gray-300 transition-colors">About Us</a></li>
+                        <li><a href="sustainability.html" class="hover:text-gray-300 transition-colors">Sustainability</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Get In Touch</h3>
+                    <p class="text-gray-400">
+                        <strong>Phone:</strong> (336) 861-3136<br>
+                        <strong>Email:</strong> <a href="mailto:contact@hpfabrics.com" class="hover:text-gray-300">contact@hpfabrics.com</a>
+                    </p>
+                </div>
+                <!-- Call to Action -->
+                <div>
+                     <h3 class="text-xl font-semibold mb-4">Have a Question?</h3>
+                     <p class="text-gray-400 mb-4">Our team is ready to assist with your fabric needs.</p>
+                     <a href="contact.html" class="btn-custom font-bold py-3 px-6 rounded-full inline-block">Contact Us</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; <span id="year"></span> High Point Fabrics, Inc. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="btn-custom w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- AOS (Animate on Scroll) Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+        
+        // Custom color for Tailwind
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                c0a080: '#c0a080',
+              }
+            }
+          }
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    </script>
+</body>
+</html>
